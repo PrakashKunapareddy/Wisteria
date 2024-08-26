@@ -30,11 +30,17 @@ public class LoginToGmailAndGorgias {
         this.driver = driver;
         this.robot = new Robot();
     }
-
+    //Gmail Login
     public void GmailLogin(String GmailUN, String GmailPW) throws Throwable{
         enterUsername(GmailUN);
         enterPassword(GmailPW);
         clickOnGoogleAppsAndClickOnGmail();
+    }
+    //Login to Gorgias
+    public void GorgiasLogin(String GorgiasUN, String GorgiasPW) throws Throwable{
+        OpnNewTab();
+        OpenGorgiasSite();
+        LoginIntoGorgias(GorgiasUN,GorgiasPW);
     }
 
     public void enterUsername(String username) throws Throwable {
@@ -92,10 +98,5 @@ public class LoginToGmailAndGorgias {
        Assert.assertEquals(driver.findElement(By.xpath("//button[@data-candu-id='navbar-user-menu']/div[1]")).getText().trim(),"SaiPrakash");
     }
 
-    public void GorgiasLogin(String GorgiasUN, String GorgiasPW) throws Throwable{
-        OpnNewTab();
-        OpenGorgiasSite();
-        LoginIntoGorgias(GorgiasUN,GorgiasPW);
-    }
 
 }

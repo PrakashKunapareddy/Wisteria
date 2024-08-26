@@ -26,11 +26,12 @@ public class QueryProductAvailability {
     private By allTickets = By.xpath("//span[text()='All']/parent::span/i");
 //    private By allTickets = By.xpath("");
 
+//    Click On All Tickets In Gorgias
     public void clickOnALlTickets() throws Throwable {
         Thread.sleep(3000);
         driver.findElement(allTickets).click();
     }
-
+    //Send mail From Gmail To Gorgias
     public void clickOnSentMailAndAccessProductAvailabilityThread(String Query, String SKUID) throws Throwable {
         Thread.sleep(3000);
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
@@ -52,7 +53,7 @@ public class QueryProductAvailability {
         Thread.sleep(3000);
         driver.switchTo().window(tabs.get(1));
     }
-
+    //Check for the Query and Switch to The Related Query and Save the Email Content
     public void openGorgiasAndAccessMail(String Query, String ItemAvailability) throws InterruptedException {
         Thread.sleep(3000);
         driver.findElement(By.xpath("//div[contains(text(),'" + Query + "')][contains(@class,'Ticket--subject')]")).click();
@@ -67,7 +68,7 @@ public class QueryProductAvailability {
                 break;
         }
     }
-
+    //Check The Template For InStock Product
     public void InStockTemplate(String content) {
         String expectedTemplate = "Dear Wisteria Automation, I hope this email finds you well. Thank you for reaching out. Currently, the  is in stock.\n\n" +
                 "- Product Name:\n" +
@@ -88,7 +89,7 @@ public class QueryProductAvailability {
         System.out.println(actualTemplate);
         Assert.assertEquals(actualTemplate, normalizedExpectedTemplate, "The email template does not match the expected structure.");
     }
-
+    //Check The Template For Out Of Stock Product
     public void OutOfStockTemplate(String content) {
         String expectedOutOfStockTemplate = "Dear Wisteria Automation,\n\n" +
                 "I hope this email finds you well. Thank you for reaching out.\n\n" +
